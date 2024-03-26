@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import style from './Home.module.scss'
 
 const Home = ({socket}) => {
 

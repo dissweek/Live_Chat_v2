@@ -9,7 +9,6 @@ const socket=socketIO.connect('http://localhost:5000')
 
 function App() {
   const [count, setCount] = useState(0)
-
   return (
     <Routes>
         <Route path='/' element={<Home socket={socket} />} />

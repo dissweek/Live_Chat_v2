@@ -19,8 +19,13 @@ app.get('api',(req,res)=>{
 socket.on('connection',(socket)=>{
     console.log(`${socket.id} user connected`);
 
-    socket.on('disconnect',(socket)=>{
-        console.log(`${socket.id} user disconnect`)})
+    socket.on('disconnect',(socket)=>{console.log(`${socket.id} user disconnect`)})
+
+    socket.on('message',(data)=>{
+        socket.emit('response',data)
+    })
+
+    
 })
 
 
