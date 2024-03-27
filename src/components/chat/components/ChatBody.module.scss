@@ -1,0 +1,71 @@
+.header{
+    
+    width: var(--chat_elements_width);
+    height: var(--chat_elements_height);
+    display: flex;
+    justify-content: end;
+    align-items:center;
+    font-size: calc(var(--index) * 0.6);
+
+    background-color: blueviolet;
+
+    &_button{
+        height: min-content;
+        padding: calc(var(--index) / 5) calc(var(--index));
+        margin-right: var(--index);
+    }
+}
+
+
+.container{
+    box-sizing: border-box;
+    height: calc(100vh - ((var(--chat_elements_height) * 2) + (var(--input_vertical_padding) * 2)));
+    padding: 0 10px 0 10px;
+    width: var(--chat_elements_width);
+    
+}
+
+.message{
+
+    width: min-content;
+    min-width: calc(var(--index) * 3);
+    // font-size: calc(var(--index) * 0.9);
+    font-size: clamp(12px,calc(var(--index) * 0.9),18px);
+    padding: 5px 10px;
+    background-color: rgb(149, 221, 255);
+    border-radius: 14px;
+    text-align: end;
+    
+    &_container{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        align-items: end;
+    }
+
+    &_sender{
+        font-size: clamp(12px,calc(var(--index) * 0.8),16px);
+        padding: 0 5px;
+        width: min-content;
+    }
+
+    &_enemy{
+        align-items: start;
+
+        & .message{
+            text-align: start;
+        }
+    }
+
+}
+
+.messageAdmin{
+    
+    &_message{
+        display: flex;
+        justify-content: center;
+        font-weight: 500;
+        font-size: clamp(14px,calc(var(--index) * 0.8),18px) ;
+    }
+
+}

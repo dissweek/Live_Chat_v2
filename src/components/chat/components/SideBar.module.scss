@@ -1,0 +1,26 @@
+
+.sidebar {
+
+    height: 100vh;
+    width: var(--sidebar_width);
+    background: red;
+
+    &_header{
+        font-size: calc(var(--index));
+        padding: calc(var(--index));
+        padding-bottom: calc(var(--index) / 2);
+        // text-align: start;
+    }
+}
+
+.users{
+
+    list-style: none;
+    font-size: calc(var(--index)* 0.6);
+    font-weight: 500;
+    padding: 0 calc(var(--index)) 0;
+    
+    &_li:not(:last-child){
+        padding-bottom: calc(var(--index) / 3);
+    }
+}
