@@ -23,7 +23,7 @@ const InputBlock = ({socket,user}) => {
   return (
     <div className={styles.input_block}>
       <form className={styles.input_form} onSubmit={handleSubmit}>
-        <textarea type="text" onChange={handleChange} value={message} className={styles.input_message}>
+        <textarea type="text" placeholder="Type message..." onChange={handleChange} value={message} className={styles.input_textarea}>
         </textarea>
         <button className={styles.input_button} type="submit">Send</button>
       </form>

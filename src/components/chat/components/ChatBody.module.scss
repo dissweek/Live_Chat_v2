@@ -60,12 +60,20 @@
 }
 
 .messageAdmin{
+    padding:var( --input_vertical_padding);
     
     &_message{
         display: flex;
         justify-content: center;
         font-weight: 500;
         font-size: clamp(14px,calc(var(--index) * 0.8),18px) ;
+        color: rgba(26, 26, 26, 0.774);
+
+        & span{
+            color: rgba(42, 30, 158, 0.993);
+        }
     }
+
+
 
 }
