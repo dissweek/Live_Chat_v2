@@ -1,46 +1,59 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from './components/SideBar'
-import ChatBody from './components/ChatBody'
-import InputBlock from './components/InputBlock'
+import Room from './components/Room/Room'
 import styles from './Chat.module.scss'
-import { io } from 'socket.io-client'
-import { useLocation } from 'react-router-dom'
 
-const socket=io.connect('http://localhost:5000')
+import { Route, Routes, useLocation } from 'react-router-dom'
+import RoomList from './components/RoomList/RoomList'
+import NoRoom from './components/NoRoom/NoRoom'
 
-const Chat = () => {
+
+
+const Chat = ({name}) => {
+  console.log(name)
+
   const { search } = useLocation();
   const [room, setRoom] = useState('');
-  const [name, setName] = useState('');
   const [messages,setMessages] = useState([])
+  const [usersInRoom,setUsersInRoom] = useState([])
+  const [user,setUser] = useState({name:'',role:'user'})
 
+// searchParams
   useEffect(()=>{
     const searchParams = Object.fromEntries(new URLSearchParams(search))
     setRoom(searchParams.room)
-    setName(searchParams.name)
+    // setName(searchParams.name)
     searchParams.role = 'user'
-    console.log(searchParams)
 
-
+    setUser({name:name,room:room})
     socket.emit('join',{...searchParams,})
   },[search])
 
-
+// post
   useEffect(()=>{
     socket.on('post',(data)=>{
       setMessages([...messages,data])
     })
   },[messages])
 
-  
+
+// message:system
+  useEffect(()=>{
+    socket.on('message:system',(data)=>{
+      setUsersInRoom(data.usersInRoom)
+      setMessages([...messages,data])
+    })
+  },[messages,usersInRoom])
+
 
   return (
     <div className={styles.chat}>
-        <Sidebar socket={socket} />
-        <main className='main'>
-            <ChatBody socket={socket} messages={messages}  name={name} />
-            <InputBlock socket={socket} user={{name,room,role:'user'}} />
-        </main>
+      <RoomList />
+  
+      <Routes>
+        <Route exact path='/' element={<NoRoom/>} />
+        <Route path='/room/:roomId' element={<Room  socket={socket} props={{messages,name,user,usersInRoom}}/>} />
+      </Routes>
+      {/* <Room socket={socket} props={{messages,name,user,usersInRoom}}  /> */}
     </div>
   )
 }

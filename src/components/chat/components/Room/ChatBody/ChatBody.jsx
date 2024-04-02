@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import styles from './ChatBody.module.scss'
 
-const ChatBody = ({socket,messages,name}) => {
+const ChatBody = ({messages,name}) => {
 
     const navigate = useNavigate()
      const handleLeave = () =>{
@@ -21,7 +21,7 @@ const ChatBody = ({socket,messages,name}) => {
         {
             messages.map((message,index) =>{
               console.log(message)
-                if (message.role === 'admin'){
+                if (message.role === 'admin' && message.message){
                   return (
                     <div key={index} className={styles.messageAdmin}>
                       <div className={styles.messageAdmin_message}>
@@ -29,7 +29,7 @@ const ChatBody = ({socket,messages,name}) => {
                       </div>
                     </div>
                   );
-                } else {
+                } else if (message.message){
                   return (
                     <div key={index} className={message.userName === name ? styles.message_container : styles.message_container + ' ' + styles.message_enemy}>
                       <p className={styles.message_sender}>{message.userName}</p>

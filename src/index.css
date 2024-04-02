@@ -16,9 +16,10 @@
 
 /* custom var */
   --index: calc(1vw + 1vh);
+  --roomlist_width: calc(var(--index) * 10);
   --sidebar_width: calc(var(--index) * 7);
   --chat_elements_height: calc(var(--index) * 2.3);
-  --chat_elements_width: calc(100vw - var(--sidebar_width));
+  --chat_elements_width: calc(100vw - var(--sidebar_width) - var(--roomlist_width));
   --input_vertical_padding: calc(var(--index) * 0.5);
 }
 

@@ -1,12 +1,12 @@
 .header{
     
-    width: var(--chat_elements_width);
+    width: 100%;
     height: var(--chat_elements_height);
     display: flex;
     justify-content: end;
     align-items:center;
     font-size: calc(var(--index) * 0.6);
-
+    padding: 0 var(--input_vertical_padding);
     background-color: blueviolet;
 
     &_button{
@@ -21,7 +21,7 @@
     box-sizing: border-box;
     height: calc(100vh - ((var(--chat_elements_height) * 2) + (var(--input_vertical_padding) * 2)));
     padding: 0 10px 0 10px;
-    width: var(--chat_elements_width);
+    width: 100%;
     
 }
 

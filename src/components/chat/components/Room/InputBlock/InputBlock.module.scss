@@ -1,7 +1,7 @@
 .input{
 
     &_block{
-        width: var(--chat_elements_width);
+        width: initial;
         height: var(--chat_elements_height);
         padding: var(--input_vertical_padding);
         position: relative;
