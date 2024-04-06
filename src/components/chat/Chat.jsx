@@ -2,41 +2,25 @@ import React, { useEffect, useState } from 'react'
 import Room from './components/Room/Room'
 import styles from './Chat.module.scss'
 
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import RoomList from './components/RoomList/RoomList'
 import NoRoom from './components/NoRoom/NoRoom'
 
 
 
-const Chat = ({name}) => {
-  console.log(name)
-
-  const { search } = useLocation();
-  const [room, setRoom] = useState('');
+const Chat = (props) => {
+  const {name,socket} = props
+  const [rooms,setRooms] = useState([])
+  const localName = localStorage.getItem('name')
   const [messages,setMessages] = useState([])
+  const [activeRoom,setActiveRoom] = useState()
   const [usersInRoom,setUsersInRoom] = useState([])
-  const [user,setUser] = useState({name:'',role:'user'})
 
-// searchParams
-  useEffect(()=>{
-    const searchParams = Object.fromEntries(new URLSearchParams(search))
-    setRoom(searchParams.room)
-    // setName(searchParams.name)
-    searchParams.role = 'user'
+  const getActiveRoom = (id) => {
+    setActiveRoom(id)
+  }
 
-    setUser({name:name,room:room})
-    socket.emit('join',{...searchParams,})
-  },[search])
-
-// post
-  useEffect(()=>{
-    socket.on('post',(data)=>{
-      setMessages([...messages,data])
-    })
-  },[messages])
-
-
-// message:system
+  // message:system
   useEffect(()=>{
     socket.on('message:system',(data)=>{
       setUsersInRoom(data.usersInRoom)
@@ -44,14 +28,53 @@ const Chat = ({name}) => {
     })
   },[messages,usersInRoom])
 
+  //post
+  useEffect(()=>{
+    socket.on('post',(data)=>{
+      setMessages([...messages,data])
+    })
+    console.log('first:',messages)
+  },[messages])
+
+  useEffect(()=>{
+    console.log(activeRoom)
+  },[activeRoom])
+
+  useEffect(()=>{
+    name ? socket.emit('login:completed',name) : socket.emit('login:completed',localName)
+  },[socket])
+
+  useEffect(()=>{
+    socket.on(`login:rooms:${name ? name : localName}`,data=>{
+      setRooms(data)
+    })
+  },[socket])
+
+  useEffect(()=>{
+    setRooms(rooms)
+  },[rooms])
+
+
+  const filterMessages = () =>{
+    let filter = messages.filter((m)=>m.userRoom == activeRoom)
+    // console.log(filter)
+    return filter
+  }
+
+
 
   return (
     <div className={styles.chat}>
-      <RoomList />
-  
+
+      <div className={styles.roomList_container}>
+        {rooms.map((r,index)=>{
+          return <RoomList key={r+index} room={r} />
+        })}
+      </div >
+       
       <Routes>
-        <Route exact path='/' element={<NoRoom/>} />
-        <Route path='/room/:roomId' element={<Room  socket={socket} props={{messages,name,user,usersInRoom}}/>} />
+        <Route exact path='/' element={<NoRoom />} />
+        <Route path='/:room' element={<Room socket={socket} getActiveRoom={getActiveRoom}  roomMessages={filterMessages()} />} />
       </Routes>
       {/* <Room socket={socket} props={{messages,name,user,usersInRoom}}  /> */}
     </div>

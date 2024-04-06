@@ -2,8 +2,8 @@ import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Home = ({getName}) => {
-  
+const Home = (props) => {
+  const {socket,getName} = props
   const [name,setName] = useState('')
   const [room,setRoom] = useState('')
 
@@ -16,6 +16,7 @@ const Home = ({getName}) => {
 
   const handleSubmit = (e) =>{ 
     getName(name)
+    localStorage.setItem('name',name)
   }
 
   return (

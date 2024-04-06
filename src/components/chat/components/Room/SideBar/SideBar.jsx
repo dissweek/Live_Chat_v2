@@ -2,12 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styles from './SideBar.module.scss'
 
 const Sidebar = ({usersInRoom}) => {
-
-  console.log(usersInRoom)
-
   const [users,setUsers] = useState([])
-
-
+  
   return (
     <div className={styles.sidebar}>
         <h4 className={styles.sidebar_header}>Users:</h4>
