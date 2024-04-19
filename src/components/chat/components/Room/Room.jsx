@@ -3,16 +3,14 @@ import Sidebar from './SideBar/SideBar'
 import ChatBody from './ChatBody/ChatBody'
 import InputBlock from './InputBlock/InputBlock'
 import styles from './Room.module.scss'
-import { useParams,useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const Room = ({socket,getActiveRoom,roomMessages}) => {
+const Room = ({socket,getActiveRoom,roomMessages,usersInRoom}) => {
 
-  console.log('roomMessages:',roomMessages)
-  const {room} = useParams()
+  // console.log('roomMessages:',roomMessages)
   const name = localStorage.getItem('name')
-  const [messages,setMessages] = useState([])
-
-  const [user,setUser] = useState({name:'',role:'user'})
+  const {room} = useParams()
+  const [user,setUser] = useState({name,role:'user'})
 
   useEffect(()=>{
     getActiveRoom(room)
@@ -22,23 +20,12 @@ const Room = ({socket,getActiveRoom,roomMessages}) => {
 // searchParams
   useEffect(()=>{
     setUser({name,room})
-    socket.emit('join',{name,room,role:'user'})
-  },[socket,room])
-
-// post
-  // useEffect(()=>{
-  //   socket.on('post',(data)=>{
-  //     setMessages([...messages,data])
-  //   })
-  // },[messages])
-
-
-
+  },[room])
 
   return (
     <>
       <main className={styles.main}>
-        <ChatBody messages={roomMessages} name={name} />
+        <ChatBody messages={roomMessages} name={name} socket={socket} room={room} />
         <InputBlock socket={socket} user={user} />
       </main>
       <Sidebar usersInRoom={usersInRoom} />
