@@ -1,3 +1,10 @@
 .main{
     width: var(--chat_elements_width);
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    background-color: rgb(29,29,29);
+    // background-image: url('../../../../assets/backgroundChat.jpg');
+    // background-repeat: no-repeat;
+    // background-size: cover;
 }

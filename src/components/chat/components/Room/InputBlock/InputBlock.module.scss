@@ -1,51 +1,81 @@
 .input{
 
     &_block{
+        display: flex;
+        justify-content: center;
+        align-items: end;
         width: initial;
-        height: var(--chat_elements_height);
-        padding: var(--input_vertical_padding);
+        padding: calc(var(--input_vertical_padding) * 0.75 ) 20% var(--input_vertical_padding);
         position: relative;
-        bottom: 0;
-        background: rgb(169, 208, 241);
-        display: flex;
-        align-items: center;
-        // padding-left: 10px;  
-    }
-
-    &_form{
-        width: fit-content;
-        display: flex;
-        align-items: center;
-        position: relative;
-        background: red;
-        border-radius: 13px;
+        background-color: rgba(17, 17, 17, 0.9);
+        border-radius: 0 0 20px 20px;
+        margin: 0 0 10px 0;
     }
     
-    &_textarea{
-        width:calc(var(--chat_elements_width) - (var(--index) / 0.6) - 100px);
-        height: calc(var(--chat_elements_height) / 2);
-        padding: calc(var(--index) * 0.3);
-        padding-right: 100px;
-        font-size: calc(var(--index) * 0.8);
+    &_input{
+        
+        position: relative;
+        box-sizing: border-box;
+        min-height: var(--input_height);
+        padding: var(--input_padding_top) var(--input_padding_right) var(--input_padding_top) calc(var(--input_height) * 2);
+        font-size: calc(var(--index) * 0.6);
         border: none;
         border-radius: 13px;
         resize: none;
+        text-wrap: wrap;   
+        background-color: aliceblue;
+
+        &:focus{
+            outline: none;
+        }
+
+    }
+
+            
+    &_wrapper{
+        position: relative;
+        width: 100%;
     }
 
     &_button{
-        position: absolute;
         box-sizing: content-box;
+        display: flex;
+        align-items: center;
         font-size: calc(var(--index) * 0.8);
         font-weight: 400;
-        height: calc(var(--chat_elements_height) / 2);
-        padding: calc(var(--index) / 5) calc(var(--index));
+        height:  var(--input_height);
+        padding: 0 var(--input_padding_right);
+        margin-left: calc(var(--index) * 0.5);
         background-color: white;
         border: none;
-        right: 0px;
+        border-radius: 13px;
         cursor: pointer;
 
         &:hover{
             background-color: rgb(239, 239, 255);
+        }
+
+        & svg{
+            width: calc(var(--index) * 0.9);
+            height: calc(var(--index) * 0.9);
+        }
+
+        &_emoji{
+            position: absolute;
+            bottom: 0px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            height:  var(--input_height);
+            background: none;
+            padding: 0 5px 0 0;
+            border: none;
+            border-radius: 0;
+
+            & svg{
+                width: calc(var(--input_height) * 0.7);
+                height: calc(var(--input_height) * 0.7);
+            }
         }
     }
 }

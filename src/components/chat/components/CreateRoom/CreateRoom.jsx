@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styles from './CreateRoom.module.scss'
+import randomIMG from '../../../../assets/random.png'
 
 const CreateRoom = ({socket,setRooms,rooms,name}) => {
     
     const [modalCreate,setModalCreate] = useState(false)
-    const [modalJoin,setModalJoin] = useState(false)
+    const [radioCreate,setRadioCreate] = useState('createRoom' || 'joinRoom')
     const [inputValue,setInputValue] = useState('')
 
     useEffect(()=>{
@@ -12,6 +13,10 @@ const CreateRoom = ({socket,setRooms,rooms,name}) => {
             data && setRooms([...rooms,data])
         })
     },[socket,rooms])
+
+    useEffect(()=>{
+        console.log(radioCreate)
+    },[radioCreate])
 
     const submit = (a,b) =>{
         a(false)
@@ -31,7 +36,7 @@ const CreateRoom = ({socket,setRooms,rooms,name}) => {
             messageDate:Date.now(),
         })
 
-        setModalJoin(false)
+        // setModalJoin(false)
         setModalCreate(false)
         setInputValue('')
     }
@@ -39,13 +44,29 @@ const CreateRoom = ({socket,setRooms,rooms,name}) => {
     return (
         <>
         <div className={styles.modal_container}>
-            <div className={styles.modal_formWrapper}>
-                <form className={styles.modal_form}  onSubmit={(e)=> modalCreate ? handleSubmit(e,'createRoom') : handleSubmit(e,'joinRoom')}>
-                    <input type="text" required value={inputValue} onChange={handleInputValue} className={styles.modal_roomName} />
-                    <button type="submit" onClick={()=>submit(setModalJoin,setModalCreate)}>Create</button>
-                    <button type="submit" onClick={()=>submit(setModalCreate,setModalJoin)}>Join</button>
-                </form>
+            <div className={styles.modal_buttonContainer}>
+                <button className={styles.modal_newRoom} onClick={()=>setModalCreate(!modalCreate)} >{!modalCreate ? 'NEW ROOM' : 'CLOSE WINDOW'}</button>
+                <button className={styles.modal_random}>
+                    <img src={randomIMG} alt="" />
+                </button>
             </div>
+            {modalCreate && <div className={styles.modal_formWrapper}>
+                <form className={styles.modal_form}  onSubmit={(e)=> handleSubmit(e,radioCreate)}>
+                    <input type="text" required  placeholder='от 5 до 12 символов' value={inputValue} onChange={handleInputValue} minLength={1} maxLength={12} className={styles.modal_roomName} />
+                   <div className={styles.modal_radio_container}>
+                        <div className={`${styles.modal_radio_background} ${radioCreate === 'createRoom' ? styles.modal_radio_backgroundL : styles.modal_radio_backgroundR}`}></div>
+                        <label className={`${styles.modal_radio} ${radioCreate === 'createRoom' && styles.modal_radio_checked}`} htmlFor="radioCreate">
+                            <input type="radio" name="radio" value={'createRoom'} checked={radioCreate === 'createRoom' && true} id="radioCreate" onChange={(e)=>setRadioCreate(e.target.value)} />
+                            <span>Create</span>
+                        </label>
+                        <label className={`${styles.modal_radio} ${radioCreate === 'joinRoom' && styles.modal_radio_checked}`} htmlFor="radioJoin">
+                            <input type="radio" checked={radioCreate === 'joinRoom' && true} name="radio" value={'joinRoom'} id="radioJoin" onChange={(e)=>setRadioCreate(e.target.value)} />
+                            <span>Join</span>
+                        </label>
+                   </div>
+                    <button className={styles.modal_radio_submit} type='submit'>Accept</button>
+                </form>
+            </div>}
         </div>
         </>
     )

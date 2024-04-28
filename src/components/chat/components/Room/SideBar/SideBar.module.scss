@@ -3,10 +3,10 @@
 
     height: 100vh;
     width: var(--sidebar_width);
-    background: #ffadad;
+    background: rgb(29,29,29);
 
     &_header{
-        font-size: calc(var(--index));
+        font-size: calc(var(--index) * 0.8);
         padding: calc(var(--index));
         padding-bottom: calc(var(--index) / 2);
         // text-align: start;

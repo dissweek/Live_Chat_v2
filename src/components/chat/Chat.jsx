@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import RoomList from './components/RoomList/RoomList'
 import NoRoom from './components/NoRoom/NoRoom'
 import CreateRoom from './components/CreateRoom/CreateRoom'
+import logo from '../../assets/logo.png'
 
 const Chat = (props) => {
   const {name,socket} = props
@@ -35,15 +36,6 @@ const Chat = (props) => {
   //post /////////////////////////////  re-work
   useEffect(()=>{
     socket.on('post',(data)=>{
-      // let objDate = new Date(data.messageDate)
-      // let messageTime = {
-      //   year:objDate.getFullYear(),
-      //   month:objDate.getMonth(),
-      //   day:objDate.getDate(),
-      //   hour:objDate.getHours(),
-      //   min:objDate.getMinutes(),
-      // }
-      // data.messageTime = messageTime
       setNewMessages(data)
       console.log(data)
     })
@@ -111,11 +103,18 @@ const Chat = (props) => {
 
   return (
     <div className={styles.chat}>
-      <div className={styles.roomList_container}>
-        <CreateRoom socket={socket} setRooms={propsSetRooms} rooms={rooms} name={localName}  />
-        {rooms?.map((r,index)=>{
-          return <RoomList key={r+index} room={r} rooms={rooms} />
-        })}
+      <div className={styles.roomList}>
+        <div className={styles.roomList_title}>
+          <span className={styles.roomList_title_span}>Aleatory</span>
+          <div className={styles.roomList_title_decorateLine}></div>
+          <span className={styles.roomList_title_span}>Meeting</span>
+        </div>
+          <CreateRoom socket={socket} setRooms={propsSetRooms} rooms={rooms} name={localName}  />
+        <div className={styles.roomList_block}>
+          {rooms?.map((r,index)=>{
+            return <RoomList key={r+index} room={r} rooms={rooms} />
+          })}
+        </div>
       </div >
        
       <Routes>

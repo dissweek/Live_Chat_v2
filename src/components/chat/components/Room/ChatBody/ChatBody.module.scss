@@ -1,38 +1,70 @@
 .header{
-    
+    box-sizing: border-box;
     width: 100%;
-    height: var(--chat_elements_height);
+    height: calc(var(--chat_elements_height) * 0.85);
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items:center;
     font-size: calc(var(--index) * 0.6);
     padding: 0 var(--input_vertical_padding);
-    background-color: blueviolet;
+    background-color: rgb(29,29,29);
 
     &_button{
         height: min-content;
         padding: calc(var(--index) / 5) calc(var(--index));
+        margin-right: calc(var(--index) * 0.5);
+        color: var(--main_text);
+    }
+
+    &_name{
+        color: var(--main_text);
+    }
+    
+    &_out{  
+        display: flex;
+        align-items: center;
         margin-right: var(--index);
+        padding: calc(var(--index) * 0.5);
+        width: calc(var(--index));
+        cursor: pointer;
+
+        & svg{
+            fill: var(--main_red);
+            width: 100%;
+        }
+
+        &:hover{
+            & svg{
+                fill: rgba(131, 5, 39, 0.767);
+            }
+        }
     }
 }
 
 
 .container{
+    background-color: rgba(17, 17, 17, 0.9);
     box-sizing: border-box;
+    flex: 1;
     width: 100%;
-    height: calc(100vh - ((var(--chat_elements_height) * 2) + (var(--input_vertical_padding) * 2)));
-    padding: 0 10px 0 10px;
-    overflow-y: scroll;
+    padding: 20px var(--index) 5px;
     align-content: end;
+    overflow-y: scroll;
+    border-radius: 20px 20px 0 0px;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgb(107, 5, 5) rgba(255, 255, 255, 0);
+    &::-webkit-scrollbar-thumb {
+        background: #642121;
+    }
+      
+
 }
 
 .message{
-
-    width: calc(var(--index) * 4);
-    // display: flex;
-    min-width: calc(var(--index) * 3);
-    // font-size: calc(var(--index) * 0.9);
-    font-size: clamp(12px,calc(var(--index) * 0.9),18px);
+    min-width: calc(var(--index)    );
+    max-width: 55%;
+    font-size: clamp(12px,calc(var(--index) * 0.8),16px);
     padding: 5px 10px;
     background-color: rgb(149, 221, 255);
     border-radius: 14px 10px 7px 14px;
@@ -40,7 +72,10 @@
     
     &_wrapper{
         display: flex;
+        justify-content: space-between;
     }
+
+
 
     &_container{
         display: flex;
@@ -64,8 +99,10 @@
     }
 
     &_block{
-        width: 100%;
         margin-left: calc(var(--index));
+        word-wrap: break-word;
+        white-space: pre-line;
+        width: 90%;
     }
 
     &_time{
@@ -90,7 +127,4 @@
             color: rgba(42, 30, 158, 0.993);
         }
     }
-
-
-
 }
