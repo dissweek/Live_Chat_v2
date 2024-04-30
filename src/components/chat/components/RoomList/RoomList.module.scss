@@ -12,6 +12,10 @@
     &:hover{
         background-color: rgba(58, 5, 19, 0.2);
     }
+    
+    &.active{
+        background-color: rgba(36, 3, 12, 0.534);
+    }
 
     &_titleWrapper{
         display: flex;

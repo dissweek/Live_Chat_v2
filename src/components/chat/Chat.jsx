@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Room from './components/Room/Room'
 import styles from './Chat.module.scss'
 
-import { Route, Routes } from 'react-router-dom'
+import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import RoomList from './components/RoomList/RoomList'
 import NoRoom from './components/NoRoom/NoRoom'
 import CreateRoom from './components/CreateRoom/CreateRoom'
@@ -104,15 +104,15 @@ const Chat = (props) => {
   return (
     <div className={styles.chat}>
       <div className={styles.roomList}>
-        <div className={styles.roomList_title}>
+        <Link to={'/chat'} className={styles.roomList_title}>
           <span className={styles.roomList_title_span}>Aleatory</span>
           <div className={styles.roomList_title_decorateLine}></div>
           <span className={styles.roomList_title_span}>Meeting</span>
-        </div>
+        </Link>
           <CreateRoom socket={socket} setRooms={propsSetRooms} rooms={rooms} name={localName}  />
         <div className={styles.roomList_block}>
           {rooms?.map((r,index)=>{
-            return <RoomList key={r+index} room={r} rooms={rooms} />
+            return <RoomList key={r+index} room={r} activeRoom={activeRoom} />
           })}
         </div>
       </div >

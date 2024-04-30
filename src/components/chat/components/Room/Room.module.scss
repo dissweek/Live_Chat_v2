@@ -1,5 +1,6 @@
 .main{
-    width: var(--chat_elements_width);
+    max-width: var(--chat_elements_width);
+    width: 100%;
     display: flex;
     flex-flow: column;
     height: 100vh;

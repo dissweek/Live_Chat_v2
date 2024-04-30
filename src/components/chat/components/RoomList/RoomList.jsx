@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './RoomList.module.scss'
 import { Link } from 'react-router-dom'
 
-const RoomList = ({room}) => {
+const RoomList = ({room,activeRoom}) => {  
   let message = room.messages.at(-1) || {}
   let objDate = new Date(room.messages.at(-1)?.messageDate)
   let nowDate = new Date()
@@ -28,7 +28,7 @@ const RoomList = ({room}) => {
   const checkMessage = (message,room) =>{
     if (message) {
       return (
-        <div key={room.id} className={styles.room}>
+        <div key={room.id} className={`${styles.room} ${activeRoom == room.id && styles.active}`}>
           <Link to={`/chat/${room.id}`}>
             <div className={styles.room_titleWrapper}>
               <h4 className={styles.room_name}>{room.id}</h4>
