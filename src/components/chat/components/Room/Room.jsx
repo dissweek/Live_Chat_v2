@@ -25,7 +25,7 @@ const Room = ({socket,getActiveRoom,roomMessages,usersInRoom}) => {
   return (
     <>
       <main className={styles.main}>
-        <ChatBody messages={roomMessages} name={name} socket={socket} room={room} />
+        <ChatBody messages={roomMessages} getActiveRoom={getActiveRoom} name={name} socket={socket} room={room} />
         <InputBlock socket={socket} user={user} />
       </main>
       <Sidebar usersInRoom={usersInRoom} />

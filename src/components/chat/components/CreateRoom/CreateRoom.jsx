@@ -52,7 +52,7 @@ const CreateRoom = ({socket,setRooms,rooms,name}) => {
             </div>
             {modalCreate && <div className={styles.modal_formWrapper}>
                 <form className={styles.modal_form}  onSubmit={(e)=> handleSubmit(e,radioCreate)}>
-                    <input type="text" required  placeholder='от 5 до 12 символов' value={inputValue} onChange={handleInputValue} minLength={1} maxLength={12} className={styles.modal_roomName} />
+                    <input type="text" required  placeholder='5 - 12 symbols' value={inputValue} onChange={handleInputValue} minLength={1} maxLength={12} className={styles.modal_roomName} />
                    <div className={styles.modal_radio_container}>
                         <div className={`${styles.modal_radio_background} ${radioCreate === 'createRoom' ? styles.modal_radio_backgroundL : styles.modal_radio_backgroundR}`}></div>
                         <label className={`${styles.modal_radio} ${radioCreate === 'createRoom' && styles.modal_radio_checked}`} htmlFor="radioCreate">

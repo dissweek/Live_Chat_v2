@@ -28,19 +28,19 @@ const RoomList = ({room,activeRoom}) => {
   const checkMessage = (message,room) =>{
     if (message) {
       return (
-        <div key={room.id} className={`${styles.room} ${activeRoom == room.id && styles.active}`}>
-          <Link to={`/chat/${room.id}`}>
-            <div className={styles.room_titleWrapper}>
-              <h4 className={styles.room_name}>{room.id}</h4>
-              <p className={styles.room_time}>{showDate(message)}</p>
-            </div>
-
-            <div className={styles.room_messageWrapper}>
-              <p className={styles.room_sender}>{message.userName === name ? 'Вы:' : message.userName + ':'}</p>
-              <p className={styles.room_lastMessage}>{message.message || <span>Сообщений пока нет...</span>}</p>
-            </div>
-          </Link>
-        </div>
+        <Link to={`/chat/${room.id}`} key={room.id} >
+          <div className={`${styles.room} ${activeRoom == room.id && styles.active}`}>
+              <div className={styles.room_titleWrapper}>
+                <h4 className={styles.room_name}>{room.id}</h4>
+                <p className={styles.room_time}>{showDate(message)}</p>
+              </div>
+  
+              <div className={styles.room_messageWrapper}>
+                <p className={styles.room_sender}>{message.userName === name ? 'You:' : message.userName + ':'}</p>
+                <p className={styles.room_lastMessage}>{message.message || <span>No messages...</span>}</p>
+              </div>
+          </div>
+        </Link >
       )
     } else {
 

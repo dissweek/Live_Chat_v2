@@ -5,7 +5,8 @@
 }
 
 .roomList{
-    width: var(--roomlist_width);
+    max-width: var(--roomlist_width);
+    min-width: var(--roomlist_width);
     background: var(--main_black);
     display: flex;
     flex-direction: column;
