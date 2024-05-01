@@ -34,9 +34,9 @@ const CreateRoom = ({socket,setRooms,rooms,name}) => {
             roomName:inputValue,
             user:name,
             messageDate:Date.now(),
+            isOpen:true
         })
 
-        // setModalJoin(false)
         setModalCreate(false)
         setInputValue('')
     }

@@ -59,7 +59,7 @@
         display: flex;
         flex-direction: column;
         padding: calc(var(--index) / 1.5) calc(var(--index) / 2);
-        background-color: rgba(10, 10, 10, 0.75);
+        background-color: rgba(27, 27, 27, 0.89);
     }
 
     &_roomName{
@@ -68,7 +68,7 @@
         padding: 2px calc(var(--index) * 0.3);
         margin-bottom: calc(var(--index) * 0.5);
         color: rgba(212, 235, 255, 0.801);
-        background-color: rgba(10, 10, 10, 0.4);
+        background-color: rgba(22, 22, 22, 0.4);
         box-shadow: inset 2px 2px 7px 1px rgba(0, 0, 0, 0.65);
         border: 2px solid rgba(19, 19, 19, 0.637);
         border-radius: 10px;
@@ -106,7 +106,7 @@
             margin-bottom: calc(var(--index) * 0.5);
             border-radius: 8px;
             overflow: hidden;
-            background-color: var(--main_black);           
+            background-color: rgb(19, 18, 18);           
         }
 
         &_background{
@@ -115,7 +115,7 @@
             bottom: 0;
             min-height: inherit;
             min-width: 200%;
-            background: linear-gradient(90deg, rgba(10,10,10,1) 30%,rgba(121,9,38,0.8) 45%, rgba(121,9,38,0.8) 55%, rgba(10,10,10,1) 70%);
+            background: linear-gradient(90deg, rgb(19, 18, 18) 30%,rgba(121,9,38,0.8) 45%, rgba(121,9,38,0.8) 55%, rgba(10,10,10,1) 70%);
             transition: all 0.5s;
 
             &L{

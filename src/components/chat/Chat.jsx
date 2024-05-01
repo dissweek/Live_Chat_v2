@@ -104,7 +104,7 @@ const Chat = (props) => {
   return (
     <div className={styles.chat}>
       <div className={styles.roomList}>
-        <Link to={'/chat'} className={styles.roomList_title}>
+        <Link to={'/chat'} onClick={()=>setActiveRoom(false)} className={styles.roomList_title}>
           <span className={styles.roomList_title_span}>Aleatory</span>
           <div className={styles.roomList_title_decorateLine}></div>
           <span className={styles.roomList_title_span}>Meeting</span>

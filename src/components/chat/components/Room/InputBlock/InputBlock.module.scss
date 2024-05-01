@@ -21,7 +21,7 @@
         line-height: normal;
         color: var(--main_text);
         min-height: var(--input_height);
-        padding: var(--input_padding_top) var(--input_padding_right) var(--input_padding_top) calc(var(--input_height) * 2);
+        padding: var(--input_padding_top) var(--input_padding_right) var(--input_padding_top) calc(var(--index) * 2);
         background-color: rgb(75, 77, 77);
         border: none;
         border-radius: 13px;
