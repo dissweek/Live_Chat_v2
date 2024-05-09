@@ -14,7 +14,7 @@ const Chat = (props) => {
   const localName = localStorage.getItem('name')
   const [newMessages,setNewMessages] = useState({})
   const [activeRoom,setActiveRoom] = useState()
-  const [usersInRoom,setUsersInRoom] = useState([])
+  // const [usersInRoom,setUsersInRoom] = useState([])
 
   const getActiveRoom = (id) => {
     setActiveRoom(id)
@@ -27,17 +27,16 @@ const Chat = (props) => {
   // message:system
   useEffect(()=>{
     socket.on('message:system',(data)=>{
-      setUsersInRoom(data.usersInRoom)
+      // setUsersInRoom(data.usersInRoom)
       setNewMessages(data) ////!!!!
     })
-  },[newMessages,usersInRoom,socket])
+  },[newMessages,socket])
   
   
-  //post /////////////////////////////  re-work
+  //post
   useEffect(()=>{
     socket.on('post',(data)=>{
       setNewMessages(data)
-      console.log(data)
     })
   },[socket])
 

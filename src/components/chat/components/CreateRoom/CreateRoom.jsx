@@ -18,9 +18,17 @@ const CreateRoom = ({socket,setRooms,rooms,name}) => {
         console.log(radioCreate)
     },[radioCreate])
 
-    const submit = (a,b) =>{
-        a(false)
-        b(true)
+    // const submit = (a,b) =>{
+    //     a(false)
+    //     b(true)
+    // }
+
+    const connectToRandomRoom = () =>{
+        socket.emit('connectToRandomRoom',{
+            name:localStorage.getItem('name'),
+            messageDate: Date.now()
+        })
+        console.log('random')
     }
   
     const handleInputValue = (e) =>{
@@ -46,7 +54,7 @@ const CreateRoom = ({socket,setRooms,rooms,name}) => {
         <div className={styles.modal_container}>
             <div className={styles.modal_buttonContainer}>
                 <button className={styles.modal_newRoom} onClick={()=>setModalCreate(!modalCreate)} >{!modalCreate ? 'NEW ROOM' : 'CLOSE WINDOW'}</button>
-                <button className={styles.modal_random}>
+                <button className={styles.modal_random} onClick={connectToRandomRoom}>
                     <img src={randomIMG} alt="" />
                 </button>
             </div>

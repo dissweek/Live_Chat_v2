@@ -10,11 +10,11 @@ const NoRoom = () => {
           <h3 className={styles.header}><span>!!!</span> Select a room or create a new one <span>!!!</span></h3>
         </div>
         <div className={styles.help_container}>
-          <p className={styles.help_title}>Little help:</p>
           <div className={styles.help_img}>
             <img src={FAQ} alt="faq" />
           </div>
           <ul className={styles.help_ul}>
+
             <li className={styles.help_ul_li}>1. Window for creating/joining a room.</li>
             <li className={styles.help_ul_li}>2. List of rooms you are a member of.</li>
             <li className={styles.help_ul_li}>3. This button will connect you to a random room.</li>
