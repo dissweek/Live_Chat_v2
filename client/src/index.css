@@ -89,10 +89,14 @@ button:focus-visible{
 }
 
 .input_emoji{
+  position: absolute;
+  z-index: 2;
+  bottom: var(--index);
   max-height: calc(var(--index) * 20) !important; 
   max-width: calc(var(--index) * 13.5) !important; 
   zoom: 0.9;
 
+  
   *{
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.603) rgba(255, 255, 255, 0);
@@ -112,6 +116,25 @@ button:focus-visible{
 
   .epr_q53mwh.epr_vl50xg.epr_-3yva2a.epr_c90x4z.epr_-sisw4f.epr_mw4zr1.epr_-kg0voo.epr_iogimd.epr_wtwvf4.epr_-lzq3oa{
     display: none;
+  }
+}
+
+@media (max-width:768px) {  
+  .input_emoji{
+    zoom: 1.4;
+  }
+
+  .epr-category-nav,.epr-emoji-list{
+    zoom: 0.8;
+  }
+}
+
+@media (max-width:576px) {  
+  .input_emoji{
+    zoom: 1.4;
+  }
+  .epr-category-nav,.epr-emoji-list,.epr-search-container{
+    zoom: 0.6;
   }
 }
 
