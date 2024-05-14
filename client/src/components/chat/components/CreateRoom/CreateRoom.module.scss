@@ -13,7 +13,7 @@
 
     &_newRoom{
         flex: 0.8;
-        font-size: calc(var(--index) * 0.6);
+        font-size: clamp(16px,calc(var(--index) * 0.6),28px);
         background-color:var(--main_red);
         color: var(--main_text);
         transition: transform 0.2s;
@@ -35,7 +35,11 @@
        
 
         & img{
-            width: calc(var(--index) * 1.5);
+            width: calc(var(--index) * 1.8);
+
+            @media (max-width:768px) {
+                width: clamp(40px,calc(var(--index) * 2.3),60px);
+            }
         }
 
         &:hover{
@@ -53,6 +57,10 @@
         border-radius: 12px;
         box-shadow: 2px 2px 15px 3px rgba(0,0,0,0.75);
         overflow: hidden;
+
+        @media (max-width:768px) {
+            margin: var(--index) 0;
+        }
     }
     
     &_form{
@@ -60,6 +68,10 @@
         flex-direction: column;
         padding: calc(var(--index) / 1.5) calc(var(--index) / 2);
         background-color: rgba(27, 27, 27, 0.89);
+
+        @media (max-width:768px) {
+        
+        }
     }
 
     &_roomName{
@@ -76,6 +88,16 @@
         &::placeholder{
             font-size:calc(var(--index) * 0.6);
         }
+
+        @media (max-width:768px) {
+            font-size: clamp(22px,var(--index),26px);
+            padding: 5px calc(var(--index) * 0.5);
+            margin-bottom: var(--index);
+
+            &::placeholder{
+                font-size: clamp(16px,var(--index),20px);
+            }
+        }
     }
 
     &_radio{
@@ -91,6 +113,12 @@
         letter-spacing: 2px;
         padding: calc(var(--index) * 0.2);
         transition: transform 0.2s;
+
+        @media (max-width:768px) {
+            font-size: clamp(20px,var(--index),24px);
+        }
+
+
         &:hover{
             transform: scale(1.15);
         }
@@ -106,7 +134,11 @@
             margin-bottom: calc(var(--index) * 0.5);
             border-radius: 8px;
             overflow: hidden;
-            background-color: rgb(19, 18, 18);           
+            background-color: rgb(19, 18, 18); 
+            
+            @media (max-width:768px) {
+                margin-bottom: var(--index);
+            }
         }
 
         &_background{
@@ -138,6 +170,11 @@
             font-weight: 700;
             letter-spacing: 2px;
             transition: transform 0.2s;
+
+            @media (max-width:768px) {
+                font-size: clamp(20px,var(--index),24px);
+                padding: calc(var(--index) / 2);
+            }
 
             &:hover{
                 transform: scale(1.05);

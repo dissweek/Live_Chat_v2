@@ -18,6 +18,10 @@
         box-shadow: inset 2px 2px 8px 4px rgba(0, 0, 0, 0.171);
     }
 
+    @media (max-width:776px) {
+        display: none;
+    }
+
 }
 
 .header{
@@ -32,6 +36,7 @@
 .help{
 
     &_container{
+        max-width: 100%;
         font-size: calc(var(--index) * 0.6);
         display: flex;
         flex-direction: column;

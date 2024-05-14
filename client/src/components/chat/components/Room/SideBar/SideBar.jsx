@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import styles from './SideBar.module.scss'
 
-const Sidebar = ({usersInRoom}) => {
+const Sidebar = ({usersInRoom,showUsers,setShowUsers}) => {
   console.log(usersInRoom)
   
   return (
-    <div className={styles.sidebar}>
-        <h4 className={styles.sidebar_header}>Users in room:</h4>
+    <div className={`${styles.sidebar} ${showUsers && styles.sidebar_mobile}`}>
+        <div className={styles.sidebar_header_container}>
+          <button className={styles.sidebar_header_close} onClick={()=>setShowUsers(false)}>
+          </button>
+
+          <h4 className={styles.sidebar_header}>Users in room:</h4>
+          <span></span>
+        </div>
         <ul className={styles.users}>
           {
             usersInRoom?.map((user,index)=> {
@@ -21,7 +27,7 @@ const Sidebar = ({usersInRoom}) => {
               return (
                 <li key={index} className={styles.users_li}>
                   <div className={styles.users_img}>
-                    {user?.avatar ? <img src={user.avatar} alt="avatar" /> : <span className={styles.users_img_noAvatar}>{user.name}</span> }
+                    {user?.avatar ? <img src={user.avatar} alt="avatar" /> : <span className={styles.users_img_noAvatar}>{user.name[0]}</span> }
                   </div>
                   <div className={styles.users_container}>
                     <p className={styles.users_name}>{user.name}</p>

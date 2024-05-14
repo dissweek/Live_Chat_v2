@@ -2,16 +2,32 @@
     height: 100vh;
     width: 100vw;
     display: flex;
+    background-color: rgb(29,29,29);
+
+    @media (max-width:768px) {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .roomList{
     max-width: var(--roomlist_width);
     min-width: var(--roomlist_width);
-    background: var(--main_black);
     display: flex;
     flex-direction: column;
     padding:calc(var(--index) / 5) calc(var(--index) / 3) calc(var(--index) / 4) calc(var(--index) / 3);
+
+    @media (max-width:768px) {
+        max-width: none;
+        width: 90vw;
+    }
     
+    &_hide{
+        @media (max-width:992px) {
+           display: none;
+        }
+    }
+
     &_title{
         display: flex;
         flex-direction: column;
@@ -19,7 +35,7 @@
         text-align: center;
         height: var(--chat_elements_height);
         margin-bottom: 20px;    
-        font-size: calc(var(--index) * 0.9);
+        font-size: clamp(18px,calc(var(--index) * 0.9),26px);
         font-weight: 700;
         line-height: calc(var(--index) * 0.8);
         letter-spacing: 2px;
@@ -55,11 +71,31 @@
                 }
             }
         }
+
+        @media (max-width:992px) {
+          padding-top: 10px;
+        }
+
+        @media (max-width:768px) {
+            font-size: clamp(18px,calc(var(--index) * 2),32px);
+            line-height: calc(var(--index) * 1.8);
+            height: auto;
+
+
+            &_span{
+                width: auto;
+            }
+
+            &_decorateLine{
+                width: calc(var(--index) * 10);
+                margin: 5px 0;
+            }
+        }
     }
 
     &_block{
         overflow-y: auto;
         scrollbar-width: thin;
-        scrollbar-color: rgb(243, 26, 26) rgba(255, 255, 255, 0);
+        scrollbar-color: rgb(71, 16, 31) rgba(255, 255, 255, 0);    
     }
 }

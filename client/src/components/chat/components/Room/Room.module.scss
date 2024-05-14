@@ -5,7 +5,15 @@
     flex-flow: column;
     height: 100vh;
     background-color: rgb(29,29,29);
-    // background-image: url('../../../../assets/backgroundChat.jpg');
-    // background-repeat: no-repeat;
-    // background-size: cover;
+
+    @media (max-width:992px) {
+        max-width: none;
+        width: calc(100vw - var(--sidebar_width));
+        margin-left: var(--index);
+    }
+    @media (max-width:776px) {
+        max-width: none;
+        width: 100%;
+        margin:  0 var(--index);
+    }
 }

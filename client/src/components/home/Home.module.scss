@@ -23,6 +23,10 @@
         background-color: rgba(252, 191, 191, 0.185);
         backdrop-filter: blur(20px);
     }
+
+    @media (max-width:768px) {
+        font-size: calc(var(--index) * 4)
+    }
 }
 
 .form{
@@ -38,6 +42,10 @@
         border: 2px solid rgba(116, 87, 87, 0.397);
         border-radius: 15px;
         backdrop-filter: blur(25px);
+
+        @media (max-width:768px) {
+            width: 90vw;
+        }
     }
 
     &_container{
@@ -45,12 +53,20 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media (max-width:768px) {
+            width: 90vw;
+        }
     }
 
     &_title{
         font-size: var(--index);
         text-align: center;
         color: var(--main_text);
+
+        @media (max-width:768px) {
+            font-size: 28px;
+        }
     }
 
     &_error{
@@ -68,6 +84,10 @@
         justify-content: center;
         height: fit-content;
         width: fit-content;
+
+        @media (max-width:768px) {
+            width: 100%;
+        }
     }
 
     &_input{
@@ -83,8 +103,14 @@
             color: rgba(255, 255, 255, 0.425);
         }
         
+        @media (max-width:768px) {
+            font-size: 20px;
+            margin-bottom: calc(var(--index) * 2);
+            padding: calc(var(--index) * 0.5);
+        }
+        
         &_create{
-            margin-bottom: 0px;
+            margin-bottom: 0px;   
         }
     }
 
@@ -95,6 +121,10 @@
         & ol{  
            list-style: disc;
            padding-left: var(--index);
+        }
+
+        @media (max-width:768px) {
+            font-size: 16px;
         }
     }
 
@@ -110,6 +140,10 @@
 
         &_create{
             margin: var(--index) 0;
+        }
+
+        @media (max-width:768px) {
+            font-size: 20px;
         }
     }
 
@@ -127,11 +161,19 @@
             color: rgb(68, 9, 9);
             transition: all .3s;
 
+            @media (max-width:768px) {
+                font-size: 16px;
+            }
+
             &:hover{
                 background: none;
                 transform: scale(1.1);
             }
 
         }
+
+        // @media (max-width:768px) {
+        //     width: 100%;
+        // }
     }
 }

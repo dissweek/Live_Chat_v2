@@ -11,10 +11,15 @@ const Room = ({socket,getActiveRoom,roomMessages,usersInRoom}) => {
   const name = localStorage.getItem('name')
   const {room} = useParams()
   const [user,setUser] = useState({name,role:'user'})
+  const [showUsers,setShowUsers] = useState(false)
 
   useEffect(()=>{
     getActiveRoom(room)
   },[room])
+
+  const forMobileShowUsers = (a) =>{
+    setShowUsers(a)
+  }
 
 
 // searchParams
@@ -25,10 +30,10 @@ const Room = ({socket,getActiveRoom,roomMessages,usersInRoom}) => {
   return (
     <>
       <main className={styles.main}>
-        <ChatBody messages={roomMessages} getActiveRoom={getActiveRoom} name={name} socket={socket} room={room} />
+        <ChatBody messages={roomMessages} setShowUsers={forMobileShowUsers} getActiveRoom={getActiveRoom} name={name} socket={socket} room={room} />
         <InputBlock socket={socket} user={user} />
       </main>
-      <Sidebar usersInRoom={usersInRoom} />
+      <Sidebar usersInRoom={usersInRoom} setShowUsers={forMobileShowUsers} showUsers={showUsers} />
     </>
   );
 };

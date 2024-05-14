@@ -16,8 +16,6 @@ const Chat = (props) => {
   const [newMessages,setNewMessages] = useState({})
   const [activeRoom,setActiveRoom] = useState()
 
-
-  console.log(password,name)
   const getActiveRoom = (id) => {
     setActiveRoom(id)
   }
@@ -118,7 +116,7 @@ const Chat = (props) => {
 
   return (
     <div className={styles.chat}>
-      <div className={styles.roomList}>
+      <div className={`${styles.roomList} ${activeRoom && styles.roomList_hide}`}>
         <Link to={'/chat'} onClick={()=>setActiveRoom(false)} className={styles.roomList_title}>
           <span className={styles.roomList_title_span}>Aleatory</span>
           <div className={styles.roomList_title_decorateLine}></div>

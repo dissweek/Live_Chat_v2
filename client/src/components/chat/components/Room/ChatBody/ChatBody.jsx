@@ -3,7 +3,9 @@ import {Link, useNavigate} from 'react-router-dom'
 import styles from './ChatBody.module.scss'
 
 const ChatBody = (props) => {
-  const {messages,name,socket,room,getActiveRoom} = props
+  const {messages,name,socket,room,getActiveRoom,setShowUsers} = props
+  const [mobileMenu,setMobileMenu] = useState(false)
+
   const navigate = useNavigate();
   const chatRef = useRef(null)
   let prevSender = null
@@ -14,6 +16,7 @@ const ChatBody = (props) => {
 
   const handleLeave = () => {
     socket.emit('leaveRoom',{name,room})
+    getActiveRoom(false)
     navigate("/chat");
   };
 
@@ -37,12 +40,30 @@ const ChatBody = (props) => {
     <>
       <header className={styles.header}>
           <Link to={'/chat'} onClick={()=>getActiveRoom(false)} className={styles.header_out}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
+            </svg>
           </Link>
-          <h2 className={styles.header_name}>{messages[0]?.userRoom}</h2>
+            <h2 className={styles.header_name}>{messages[0]?.userRoom}</h2>
         <button onClick={handleLeave} className={styles.header_button}>
           Leave
         </button>
+
+        <div className={styles.header_mobile} onClick={()=>setMobileMenu(!mobileMenu)}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512">
+            <path fill="#6b0a26" d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/>
+          </svg>
+
+          {mobileMenu && <div className={styles.header_mobile_menu}>
+            <button onClick={()=>setShowUsers(true)} className={`${styles.header_button} ${styles.header_mobile_button}`}>
+              Users
+            </button>
+            <button onClick={handleLeave} className={`${styles.header_button} ${styles.header_mobile_button}`}>
+              Leave
+            </button>
+          </div>}
+        </div>
+
       </header>
 
       <div className={styles.container} ref={chatRef}>
@@ -81,7 +102,7 @@ const ChatBody = (props) => {
                   {message.userName === messages[index+1]?.userName ?  
                     <div className={styles.message_margin}></div>
                     : <div className={styles.message_img}>
-                      {message?.userAvatar ? <img src={message.userAvatar} alt="avatar" /> : <span className={styles.message_img_noAvatar}>{message.userName.split(0,1)}</span> }
+                      {message?.userAvatar ? <img src={message.userAvatar} alt="avatar" /> : <span className={styles.message_img_noAvatar}>{message.userName[0]}</span> }
                     </div>
                   }
                 </div>
