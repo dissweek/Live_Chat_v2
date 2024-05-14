@@ -1,0 +1,137 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../../assets/backgroundHome.jpg');
+    background-size:cover;
+    // background-position-x:center ;
+    background-repeat: no-repeat;
+}
+
+
+.title{
+    margin: calc(var(--index) * 0.4) 0 calc(var(--index) * 0.75);
+    color: rgba(193, 213, 230, 0.712);
+
+    &_container{
+        width: 100vw;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        background-color: rgba(252, 191, 191, 0.185);
+        backdrop-filter: blur(20px);
+    }
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+    
+    &_wrapper{
+        padding: calc(var(--index) / 3) var(--index) var(--index);
+        background-color: rgba(252, 191, 191, 0.185);
+        border: 2px solid rgba(116, 87, 87, 0.397);
+        border-radius: 15px;
+        backdrop-filter: blur(25px);
+    }
+
+    &_container{
+        width: 20vw; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &_title{
+        font-size: var(--index);
+        text-align: center;
+        color: var(--main_text);
+    }
+
+    &_error{
+        font-size: clamp(14px,calc(var(--index) * 0.7),20px);
+        height: min-content;
+        font-weight: 600;
+        padding: calc(var(--index) / 8) calc(var(--index) / 2) calc(var(--index) / 2);
+        color: rgb(110, 18, 18);
+        text-align: center;
+    }
+
+    &_login{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: fit-content;
+        width: fit-content;
+    }
+
+    &_input{
+        font-size: calc(var(--index) * 0.8);
+        color: rgb(250, 251, 252);
+        padding: calc(var(--index) * 0.3);
+        margin-bottom: calc(var(--index));
+        background-color: rgba(255, 255, 255, 0);
+        border: 2px solid var(--main_text);
+        border-radius: 12px;
+        
+        &::placeholder{
+            color: rgba(255, 255, 255, 0.425);
+        }
+        
+        &_create{
+            margin-bottom: 0px;
+        }
+    }
+
+    &_rule{
+        font-size: clamp(12px,calc(var(--index) * 0.6),16px);
+        color:var(--main_text);
+
+        & ol{  
+           list-style: disc;
+           padding-left: var(--index);
+        }
+    }
+
+    &_submit{
+        margin-bottom: var(--index);
+        text-align: center;
+        align-self: center;
+        font-size: calc(var(--index) * 0.8);
+        color: var(--main_text);
+        padding-top: calc(var(--index) / 10 );
+        padding-bottom: calc(var(--index) / 5 );
+        width: 70%;
+
+        &_create{
+            margin: var(--index) 0;
+        }
+    }
+
+    &_newAccount{
+        text-align: center;
+        color: var(--main_text);
+
+        & button{
+            font-size: calc(var(--index) * 0.7);
+            font-weight: 500;
+            padding: 0;
+            margin-left: calc(var(--index) / 3);
+            background: none;
+            text-decoration: underline;
+            color: rgb(68, 9, 9);
+            transition: all .3s;
+
+            &:hover{
+                background: none;
+                transform: scale(1.1);
+            }
+
+        }
+    }
+}

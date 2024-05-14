@@ -1,0 +1,150 @@
+.modal{
+
+    &_container{
+        position: relative;
+        margin-bottom: calc(var(--index) / 2);
+    }
+
+    &_buttonContainer{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: calc(var(--index) / 2);
+    }
+
+    &_newRoom{
+        flex: 0.8;
+        font-size: calc(var(--index) * 0.6);
+        background-color:var(--main_red);
+        color: var(--main_text);
+        transition: transform 0.2s;
+
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+
+    &_random{
+       display: flex;
+       align-items: center;
+       padding: 0 calc(var(--index) /3 );
+       background:none;
+
+       &:hover{
+        background:none;
+       }
+       
+
+        & img{
+            width: calc(var(--index) * 1.5);
+        }
+
+        &:hover{
+            & img{
+                transform: rotateZ(720deg);
+                transition: all 1s ;
+            }
+        }
+    }
+
+    &_formWrapper{
+        background-image: url('../../../../assets/backgroundMetall.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 12px;
+        box-shadow: 2px 2px 15px 3px rgba(0,0,0,0.75);
+        overflow: hidden;
+    }
+    
+    &_form{
+        display: flex;
+        flex-direction: column;
+        padding: calc(var(--index) / 1.5) calc(var(--index) / 2);
+        background-color: rgba(27, 27, 27, 0.89);
+    }
+
+    &_roomName{
+        font-size: calc(var(--index) * 0.8);
+        max-width: 100%;
+        padding: 2px calc(var(--index) * 0.3);
+        margin-bottom: calc(var(--index) * 0.5);
+        color: rgba(212, 235, 255, 0.801);
+        background-color: rgba(22, 22, 22, 0.4);
+        box-shadow: inset 2px 2px 7px 1px rgba(0, 0, 0, 0.65);
+        border: 2px solid rgba(19, 19, 19, 0.637);
+        border-radius: 10px;
+
+        &::placeholder{
+            font-size:calc(var(--index) * 0.6);
+        }
+    }
+
+    &_radio{
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(138, 138, 138, 0.596);
+        font-size: calc(var(--index) * 0.7);
+        font-weight: 700;
+        letter-spacing: 2px;
+        padding: calc(var(--index) * 0.2);
+        transition: transform 0.2s;
+        &:hover{
+            transform: scale(1.15);
+        }
+        
+        & input[type = 'radio']{
+            display: none;
+        }
+
+        &_container{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-bottom: calc(var(--index) * 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: rgb(19, 18, 18);           
+        }
+
+        &_background{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            min-height: inherit;
+            min-width: 200%;
+            background: linear-gradient(90deg, rgb(19, 18, 18) 30%,rgba(121,9,38,0.8) 45%, rgba(121,9,38,0.8) 55%, rgba(10,10,10,1) 70%);
+            transition: all 0.5s;
+
+            &L{
+                transform: translateX(-15%);
+            }
+            &R{
+                transform: translateX(15%);
+            }
+        }
+
+        &_checked{
+            color: var(--main_text);
+        }
+
+        &_submit{
+            border-radius: 12px;
+            background-color: var(--main_red);
+            color: var(--main_text);
+            font-size: calc(var(--index) * 0.7);
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: transform 0.2s;
+
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+
+        
+    }
+
+}
