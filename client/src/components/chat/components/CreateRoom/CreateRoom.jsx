@@ -14,21 +14,12 @@ const CreateRoom = ({socket,setRooms,rooms,name}) => {
         })
     },[socket,rooms])
 
-    useEffect(()=>{
-        console.log(radioCreate)
-    },[radioCreate])
-
-    // const submit = (a,b) =>{
-    //     a(false)
-    //     b(true)
-    // }
 
     const connectToRandomRoom = () =>{
         socket.emit('connectToRandomRoom',{
             name:localStorage.getItem('name'),
             messageDate: Date.now()
         })
-        console.log('random')
     }
   
     const handleInputValue = (e) =>{

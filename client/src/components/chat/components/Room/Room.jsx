@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 
 const Room = ({socket,getActiveRoom,roomMessages,usersInRoom}) => {
 
-  // console.log('roomMessages:',roomMessages)
   const name = localStorage.getItem('name')
   const {room} = useParams()
   const [user,setUser] = useState({name,role:'user'})

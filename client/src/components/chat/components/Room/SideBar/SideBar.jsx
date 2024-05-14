@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styles from './SideBar.module.scss'
 
 const Sidebar = ({usersInRoom,showUsers,setShowUsers}) => {
-  console.log(usersInRoom)
   
   return (
     <div className={`${styles.sidebar} ${showUsers && styles.sidebar_mobile}`}>
@@ -16,7 +15,6 @@ const Sidebar = ({usersInRoom,showUsers,setShowUsers}) => {
         <ul className={styles.users}>
           {
             usersInRoom?.map((user,index)=> {
-              console.log(user)
               let date = new Date(user.joinInRoom)
               let dateJoin = {
                 day:date.getDate(),

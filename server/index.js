@@ -46,13 +46,11 @@ const createOrJoin = (socket,funcName,eName,data) =>{
 io.on('connection',(socket)=>{
 
     socket.on('register',data=>{
-        console.log(data)
         let answer = createNewUser(data)
         io.emit(`login:answer:${data.name}`,answer)
     })
 
     socket.on('login',data=>{
-        console.log(data)
         let answer = loginUser(data)
         io.emit(`login:answer:${data.name}`,answer)
     })

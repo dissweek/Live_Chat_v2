@@ -18,9 +18,8 @@ const Chat = (props) => {
 
   useEffect(()=>{
     let vh = window.innerHeight * 0.01
-    console.log(vh)
     document.documentElement.style.setProperty('--vh',`${vh}px`)
-  },[window])
+  },[])
 
   const getActiveRoom = (id) => {
     setActiveRoom(id)
@@ -92,7 +91,6 @@ const Chat = (props) => {
         return 0
       })
 
-      console.log(data)
       setRooms(data)
     })
   },[socket])

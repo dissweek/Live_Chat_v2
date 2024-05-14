@@ -25,7 +25,6 @@ const Home = (props) => {
 
   const handleSubmitLogin = (e) =>{ 
     e.preventDefault()
-    console.log(name)
     setSocketName(name)
     socket.emit('login',{name,password})
   }

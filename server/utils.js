@@ -222,7 +222,6 @@ const createNewUser = (user) =>{
 
 const loginUser = (user) =>{
     let find = users.find((u) => (u.name === user.name))
-    console.log(find)
     if (find?.password === user.password){
         return true
     } else {
@@ -255,7 +254,6 @@ const createRoom = (data) =>{
 const joinRoom = (data) =>{
     let joinRoomAnswer = false
     let find = rooms.find(r=>(r.id === data.roomName))
-    console.log(data)
 
     if  (find) {
         users.forEach(u=>{
@@ -280,7 +278,6 @@ const connectToRandomRoom = (data) =>{
         if (!checkRoom) return room
     })
     let newRoom = availableRooms[getRandomInt(availableRooms.length)]
-    console.log(newRoom)
     return newRoom
 }
 
