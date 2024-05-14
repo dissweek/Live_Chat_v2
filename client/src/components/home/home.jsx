@@ -56,7 +56,7 @@ const Home = (props) => {
   return (
     <div className={styles.home}>
         <div className={styles.title_container}>
-          <h1 className={styles.title}>Aleatory Meating</h1>
+          <h1 className={styles.title}>Aleatory Meeting</h1>
         </div>
 
         <div className={styles.form_container}>
