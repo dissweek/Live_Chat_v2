@@ -6,22 +6,40 @@ import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import RoomList from './components/RoomList/RoomList'
 import NoRoom from './components/NoRoom/NoRoom'
 import CreateRoom from './components/CreateRoom/CreateRoom'
-import logo from '../../assets/logo.png'
 
 const Chat = (props) => {
-  const {name,socket} = props
+  const {socket} = props
+  const navigate = useNavigate()
   const [rooms,setRooms] = useState([])
-  const localName = localStorage.getItem('name')
+  const name = localStorage.getItem('name')
+  const password = localStorage.getItem('password')
   const [newMessages,setNewMessages] = useState({})
   const [activeRoom,setActiveRoom] = useState()
-  // const [usersInRoom,setUsersInRoom] = useState([])
 
+
+  console.log(password,name)
   const getActiveRoom = (id) => {
     setActiveRoom(id)
   }
 
   useEffect(()=>{
-    socket.emit('join',{name:localName,role:'user'})
+    socket.emit('login',{name,password})
+  },[socket])
+
+  useEffect(()=>{
+    socket.on(`login:answer:${name}`,data=>{
+      if (data !== true){
+        localStorage.removeItem('name')
+        localStorage.removeItem('password')
+        navigate('/')
+      } else {
+        socket.emit('login:completed',name)
+      }
+    })
+  },[socket])
+
+  useEffect(()=>{
+    socket.emit('join',{name,role:'user'})
   },[socket])
 
   // message:system
@@ -59,13 +77,11 @@ const Chat = (props) => {
     setRooms(updateRooms)
   },[newMessages])
 
-  useEffect(()=>{
-    name ? socket.emit('login:completed',name) : socket.emit('login:completed',localName)
-  },[socket])
+
 
   //rooms
   useEffect(()=>{
-    socket.on(`login:rooms:${name ? name : localName}`,data=>{
+    socket.on(`login:rooms:${name}`,data=>{
       data.sort((a,b)=>{
         if (a.messages.at(-1).messageDate < b.messages.at(-1).messageDate){ return 1 }
         if (a.messages.at(-1).messageDate > b.messages.at(-1).messageDate){ return -1 }
@@ -78,7 +94,7 @@ const Chat = (props) => {
   },[socket])
 
   useEffect(()=>{
-    socket.on(`joinRoom:${localName}`,data=>{
+    socket.on(`joinRoom:${name}`,data=>{
       if (data) {
         setNewMessages(data.messages)
         setRooms([...rooms,data])
@@ -108,7 +124,7 @@ const Chat = (props) => {
           <div className={styles.roomList_title_decorateLine}></div>
           <span className={styles.roomList_title_span}>Meeting</span>
         </Link>
-          <CreateRoom socket={socket} setRooms={propsSetRooms} rooms={rooms} name={localName}  />
+          <CreateRoom socket={socket} setRooms={propsSetRooms} rooms={rooms} name={name}  />
         <div className={styles.roomList_block}>
           {rooms?.map((r,index)=>{
             return <RoomList key={r+index} room={r} activeRoom={activeRoom} />

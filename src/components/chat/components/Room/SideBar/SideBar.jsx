@@ -10,6 +10,7 @@ const Sidebar = ({usersInRoom}) => {
         <ul className={styles.users}>
           {
             usersInRoom?.map((user,index)=> {
+              console.log(user)
               let date = new Date(user.joinInRoom)
               let dateJoin = {
                 day:date.getDate(),
