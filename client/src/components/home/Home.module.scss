@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     background-image: url('../../assets/backgroundHome.jpg');
     background-size:cover;
     // background-position-x:center ;

@@ -283,8 +283,8 @@ const connectToRandomRoom = (data) =>{
 
 const leaveRoom = (data) =>{
     rooms.map(room=>{
-        if (room.id === data.room && room.users.includes(data.name)) {
-            room.users = room.users.filter(user=>user != data.name)
+        if (room.id === data.room) {
+            room.users = room.users.filter(user=> user.name !== data.name)
         }
     })
     users.map(user=>{

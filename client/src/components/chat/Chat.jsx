@@ -48,8 +48,7 @@ const Chat = (props) => {
   // message:system
   useEffect(()=>{
     socket.on('message:system',(data)=>{
-      // setUsersInRoom(data.usersInRoom)
-      setNewMessages(data) ////!!!!
+      setNewMessages(data)
     })
   },[newMessages,socket])
   

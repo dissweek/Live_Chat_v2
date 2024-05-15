@@ -1,10 +1,10 @@
 import React,{useEffect, useState} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from './Home.module.scss'
 
 
 const Home = (props) => {
-  const {socket,getName} = props
+  const {socket} = props
   const [login,setLogin] = useState(true)
   const [name,setName] = useState('')
   const [socketName,setSocketName] = useState('')

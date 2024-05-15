@@ -1,5 +1,5 @@
 .chat{
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     width: 100vw;
     display: flex;
     background-color: rgb(29,29,29);

@@ -145,7 +145,7 @@
         justify-content: end;
 
         @media (max-width:576px){
-            margin-bottom: 0px;
+            margin-bottom: 5px;
         }
     }
 
@@ -197,6 +197,10 @@
         text-align: end;
         line-height: calc(var(--index) * 1);
         width: 90%;
+
+        @media (max-width:768px) {
+            line-height: 20px;
+        }
     }
 
     &_time{
