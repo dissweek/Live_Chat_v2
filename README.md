@@ -1,3 +1,37 @@
+
+# Aleatory Meeting (Live chat on WebSocket)
+
+Introducing 'Aleatory Meeting' — the next level of social interaction!
+
+Welcome to your gateway to random encounters and unexpected conversations. 'Aleatory Meeting' is more than just a messenger. It’s a social platform where every click can lead to a new and intriguing acquaintance. Here, you can instantly connect to a random room and become part of a dynamic dialogue with people from all over the world.
+
+![Logo](https://i.imgur.com/kswoU2p.png)
+
+
+## Authors
+
+- [@DissWeek](https://github.com/dissweek)
+
+
+## Key Features:
+
+- Random Room Selection: Press a button and find yourself in a new room with new people.
+- Anonymity: Your identity remains hidden until you choose to reveal it.
+- Diverse Topics: From everyday chats to deep philosophical debates — every room is unique.
+
+## 🔗 Links
+
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
+
+[![instagram](https://img.shields.io/badge/-Instagram-white.svg?logo=instagram&style=for-the-badge)](https://www.instagram.com/diss.week/)
+
+
+## 🛠 Skills in Project
+### WebSocket, React, Javascript, HTML, SCSS.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
